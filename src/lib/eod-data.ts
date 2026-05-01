@@ -3,6 +3,7 @@ import "server-only";
 import snapshot from "../../data/eod-report.snapshot.json";
 
 import { getGoogleSheetsDashboardData } from "@/lib/google-sheets";
+import { getPublishedGoogleSheetsDashboardData } from "@/lib/google-sheets-public";
 import {
   buildEmptyRecord,
   type DashboardData,
@@ -17,10 +18,20 @@ export type {
   MetricSnapshot,
 } from "@/lib/eod-types";
 
-export type DataSource = "excel" | "google-sheets";
+export type DataSource = "excel" | "google-sheets" | "google-sheets-public";
 
 function normalizeDataSource(value: string | undefined): DataSource {
   const normalized = value?.trim().toLowerCase();
+
+  if (
+    normalized === "google-sheets-public" ||
+    normalized === "google_sheets_public" ||
+    normalized === "google-public" ||
+    normalized === "published-csv" ||
+    normalized === "public-csv"
+  ) {
+    return "google-sheets-public";
+  }
 
   if (
     normalized === "google-sheets" ||
@@ -40,6 +51,10 @@ export function getConfiguredDataSource(): DataSource {
 
 export async function getDashboardData(): Promise<DashboardData> {
   const dataSource = getConfiguredDataSource();
+
+  if (dataSource === "google-sheets-public") {
+    return getPublishedGoogleSheetsDashboardData();
+  }
 
   if (dataSource === "google-sheets") {
     return getGoogleSheetsDashboardData();

@@ -323,7 +323,9 @@ export default async function DashboardPage({
             <p>
               {dataSource === "google-sheets"
                 ? "On Render, set the Google Sheets env vars and share the sheet with the service-account email before reloading the app."
-                : "If you are using the Excel snapshot flow, refresh the snapshot with npm run sync:data and try again."}
+                : dataSource === "google-sheets-public"
+                  ? "Set the published CSV URL env vars for each tab and make sure each sheet is published to the web as CSV before reloading the app."
+                  : "If you are using the Excel snapshot flow, refresh the snapshot with npm run sync:data and try again."}
             </p>
           </div>
         </section>
@@ -345,7 +347,9 @@ export default async function DashboardPage({
             <p>
               {dataSource === "google-sheets"
                 ? "The connected Google Sheet did not return any usable EOD rows yet."
-                : "Refresh the Excel snapshot with npm run sync:data to populate the app."}
+                : dataSource === "google-sheets-public"
+                  ? "The published CSV feeds did not return any usable EOD rows yet."
+                  : "Refresh the Excel snapshot with npm run sync:data to populate the app."}
             </p>
           </div>
         </section>
