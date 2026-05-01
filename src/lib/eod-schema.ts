@@ -12,6 +12,13 @@ export interface MemberConfig {
   sheetName: string;
   displayName: string;
   accent: string;
+  role: string;
+  avatar: string;
+  primaryMetricKey: string;
+  goals: Array<{
+    label: string;
+    target: string;
+  }>;
   metrics: MetricConfig[];
 }
 
@@ -21,6 +28,13 @@ export const TEAM_MEMBERS: MemberConfig[] = [
     sheetName: "Chenge",
     displayName: "Chenge",
     accent: "#ff7a59",
+    role: "Texting & Mail",
+    avatar: "C",
+    primaryMetricKey: "textsSent",
+    goals: [
+      { label: "Texts Sent", target: "Daily focus" },
+      { label: "Mail Scrubbed", target: "Pipeline ready" },
+    ],
     metrics: [
       { key: "textsSent", label: "Texts Sent", type: "count", isTask: true },
       { key: "followUpTexts", label: "# Texts Sent", type: "count", isTask: true },
@@ -34,6 +48,14 @@ export const TEAM_MEMBERS: MemberConfig[] = [
     sheetName: "Corbin",
     displayName: "Corbin",
     accent: "#0c7b93",
+    role: "Sales & Closing",
+    avatar: "Co",
+    primaryMetricKey: "contractsSigned",
+    goals: [
+      { label: "Offers", target: "30/wk" },
+      { label: "Talk Time", target: "2 hrs/day" },
+      { label: "Agreements", target: "2/wk" },
+    ],
     metrics: [
       { key: "offersMade", label: "Offers Made", type: "count", isTask: true },
       { key: "verbalsAccepted", label: "Verbals Accepted", type: "count", isTask: true },
@@ -49,6 +71,15 @@ export const TEAM_MEMBERS: MemberConfig[] = [
     sheetName: "Marie",
     displayName: "Marie",
     accent: "#f4a261",
+    role: "Appointment Setting",
+    avatar: "M",
+    primaryMetricKey: "appointmentsBooked",
+    goals: [
+      { label: "Appts Set", target: "8-10/day" },
+      { label: "Talk Time", target: "2.5 hrs/day" },
+      { label: "Dials", target: "80/day" },
+      { label: "Speed to Lead", target: "30 min" },
+    ],
     metrics: [
       { key: "dialsMade", label: "Dials Made", type: "count", isTask: true },
       { key: "connectedCalls", label: "Connected Calls", type: "count", isTask: true },
@@ -64,6 +95,13 @@ export const TEAM_MEMBERS: MemberConfig[] = [
     sheetName: "Hugo",
     displayName: "Hugo",
     accent: "#2a9d8f",
+    role: "Outreach & Partnerships",
+    avatar: "H",
+    primaryMetricKey: "realtorsContacted",
+    goals: [
+      { label: "Realtors", target: "Daily outreach" },
+      { label: "Title Cos", target: "Steady pipeline" },
+    ],
     metrics: [
       { key: "realtorsContacted", label: "Realtors Contacted", type: "count", isTask: true },
       {
@@ -82,6 +120,13 @@ export const TEAM_MEMBERS: MemberConfig[] = [
     sheetName: "Taa",
     displayName: "Taa",
     accent: "#7d4f9e",
+    role: "Texting & Leads",
+    avatar: "T",
+    primaryMetricKey: "leadsPushed",
+    goals: [
+      { label: "Response Time", target: "7 min" },
+      { label: "Leads/Day", target: "20" },
+    ],
     metrics: [
       { key: "textsSent", label: "Texts Sent", type: "count", isTask: true },
       { key: "responseRate", label: "Response Rate", type: "percent", isTask: true },

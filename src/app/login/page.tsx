@@ -50,8 +50,8 @@ export default async function LoginPage({
         {errorMessage ? <p className="auth-error">{errorMessage}</p> : null}
 
         <p className="auth-note">
-          Data source: local Excel workbook for now. The app is already shaped so the source can
-          be swapped to Google Sheets later.
+          Data source: published Google Sheets CSV feeds by default, with fallback support for the
+          Excel snapshot if the team needs it.
         </p>
 
         <Link className="auth-link" href="https://render.com/docs/deploy-nextjs">
